@@ -9,7 +9,7 @@ import lombok.Data;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ProId;
+    public int ProId;
     public String ProType;
     public int ProPrice;
     public String ProName;

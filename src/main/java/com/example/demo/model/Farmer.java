@@ -8,11 +8,11 @@ import lombok.Data;
 public class Farmer {
     @Id //second
     @GeneratedValue(strategy = GenerationType.IDENTITY)  //third
-    private int FarmerId;
-    private  String Fname;
-    private  String Address;
-    private  String Fgender;
-    private  String Email;
+    public int FarmerId;
+    public   String Fname;
+    public   String Address;
+    public   String Fgender;
+    public   String Email;
 
 
     public int getFarmerId() {

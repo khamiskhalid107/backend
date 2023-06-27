@@ -50,7 +50,7 @@ public class ProductApi {
     public ResponseEntity<?> addProduct(@RequestBody Product proda){
         try {
             Product product1 = productRepo.save(proda);
-            return new ResponseEntity<>("data succesful",HttpStatus.OK);
+            return new ResponseEntity<>("data inserted succesful",HttpStatus.OK);
 
         }catch (Exception exception){
             return new ResponseEntity<>("uzembe wangu",HttpStatus.BAD_REQUEST);

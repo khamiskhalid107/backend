@@ -68,21 +68,13 @@ public class ProductApi {
     @PutMapping("/update/{ProId}")
     public ResponseEntity<?> updateProduct(@PathVariable int ProId,@RequestBody Product updateProduct){
         try {
-            Optional<Product> optionalProduct = productRepo.findById(ProId);
-            if (optionalProduct.isPresent()){
-                Product existingProduct = optionalProduct.get();
-//                existingProduct.setFarmer(updateProduct.getFarmer());
-                existingProduct.setProId(updateProduct.getProId());
-                existingProduct.setProPrice(updateProduct.ProPrice);
-//                existingProduct.setFarmer(updateProduct.getFarmer());
-                existingProduct.setProType(updateProduct.ProType);
-                existingProduct.ProName(updateProduct.ProName);
-                productRepo.save(existingProduct);
+            if(productRepo.findById(ProId).isPresent()){
+                updateProduct.setProId(ProId);
+                Product product = productRepo.save(updateProduct);
 
-                return new ResponseEntity<>("Data saved",HttpStatus.OK);
-
-            }else {
-                return new ResponseEntity<>("Product not found",HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(product,HttpStatus.OK);
+            }else{
+                return new ResponseEntity<>("Student not found",HttpStatus.NOT_FOUND);
             }
         }catch (Exception exception){
             return new ResponseEntity<>("Server Error",HttpStatus.INTERNAL_SERVER_ERROR);
